@@ -1,12 +1,13 @@
 import { formatForValuesProducts } from "../helpers/moneyFormat"
-import { IOrder } from "../interfaces/items.interface"
+import { IOrder, Items } from "../interfaces/items.interface"
 
 
 interface IProps {
     order: IOrder[]
+    removeItem: (order: Items) => void;
 }
 
-export const OrderContents = ({ order }: IProps) => {
+export const OrderContents = ({ order, removeItem }: IProps) => {
   return (
     <div>
       <h2 className="font-black text-4xl">Consumo</h2>
@@ -32,7 +33,10 @@ export const OrderContents = ({ order }: IProps) => {
 
                             </div>
 
-                            <button className="bg-red-600 h-8 w-8 rounded-full text-white font-black hover:bg-red-500">
+                            <button 
+                                className="bg-red-600 h-8 w-8 rounded-full text-white font-black hover:bg-red-500"
+                                onClick={ () => removeItem(order) }
+                            >
                                 X
                             </button>
 
