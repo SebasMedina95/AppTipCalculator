@@ -65,7 +65,6 @@ export default function useOrder() {
 
     // Recalcular subtotal cada vez que cambie la orden
     useEffect(() => {
-        console.log({subTotal});
         subtotalAmount();
     }, [order]);
 
