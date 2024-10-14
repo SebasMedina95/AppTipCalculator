@@ -4,9 +4,11 @@ import { IOrder } from "../interfaces/items.interface"
 interface IProps {
     order: IOrder[]
     subTotal: number;
+    totalTip: number;
+    totalOrder: number;
 }
 
-export const OrderTotals = ({ order, subTotal }: IProps) => {
+export const OrderTotals = ({ order, subTotal, totalTip, totalOrder }: IProps) => {
 
     console.log(order);
 
@@ -21,11 +23,11 @@ export const OrderTotals = ({ order, subTotal }: IProps) => {
             </p>
             <p>
                 Propina: {''}
-                <span className="font-bold"> $0 </span>
+                <span className="font-bold"> { formatForValuesProducts(totalTip) } </span>
             </p>
             <p>
                 Total a Pagar: {''}
-                <span className="font-bold"> $0 </span>
+                <span className="font-bold"> { formatForValuesProducts(totalOrder) } </span>
             </p>
         </div>
 

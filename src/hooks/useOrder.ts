@@ -5,6 +5,9 @@ export default function useOrder() {
 
     const [order, setOrder] = useState<IOrder[]>([]);
     const [subTotal, setSubTotal] = useState<number>(0);
+    const [tip, setTip] = useState<number>(0);
+    const [totalTip, setTotalTip] = useState<number>(0);
+    const [totalOrder, setTotalOrder] = useState<number>(0);
 
     const addItem = (item: Items) => {
 
@@ -61,6 +64,19 @@ export default function useOrder() {
         const calculatedSubTotal = order.reduce((acc, item) => acc + item.price * item.quantity, 0);
         setSubTotal(calculatedSubTotal);
 
+        if( tip === 0 ){
+            setTotalOrder(calculatedSubTotal);
+        }
+
+    }
+
+    const calculatedTip = () => {
+
+        const valTip: number = Number(subTotal * tip);
+        setTotalTip(valTip);
+        setTotalOrder(subTotal + valTip);
+        console.log("Acá estoy");
+
     }
 
     // Recalcular subtotal cada vez que cambie la orden
@@ -68,12 +84,21 @@ export default function useOrder() {
         subtotalAmount();
     }, [order]);
 
+    useEffect(() => {
+        calculatedTip();
+    }, [tip, removeItem]);
+
     return {
         order,
+        subTotal,
+        tip,
+        totalTip,
+        totalOrder,
+        setTip,
         addItem,
         removeItem,
         subtotalAmount,
-        subTotal
+        calculatedTip,
     }
 
 }

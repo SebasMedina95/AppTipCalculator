@@ -1,6 +1,11 @@
 
 const tipOptions = [
     {
+      id: 'tip-0',
+      value: .0,
+      label: '0%'
+    },
+    {
       id: 'tip-10',
       value: .10,
       label: '10%'
@@ -17,7 +22,11 @@ const tipOptions = [
     },
   ]
 
-export const TipPercentsForm = () => {
+interface IProps {
+  setTip: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const TipPercentsForm = ({ setTip }: IProps) => {
   return (
     <div>
       <h3 className="font-black text-2xl">Propina</h3>
@@ -34,6 +43,7 @@ export const TipPercentsForm = () => {
                     type="radio"
                     name="tip"
                     value={tip.value}
+                    onChange={ e => setTip(Number(e.target.value)) }
                 />
 
               </div>  
