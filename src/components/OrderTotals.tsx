@@ -6,11 +6,16 @@ interface IProps {
     subTotal: number;
     totalTip: number;
     totalOrder: number;
+    placeOrder: () => void;
 }
 
-export const OrderTotals = ({ order, subTotal, totalTip, totalOrder }: IProps) => {
-
-    console.log(order);
+export const OrderTotals = ({ 
+    order, 
+    subTotal, 
+    totalTip, 
+    totalOrder, 
+    placeOrder 
+}: IProps) => {
 
   return (
     <>
@@ -31,7 +36,13 @@ export const OrderTotals = ({ order, subTotal, totalTip, totalOrder }: IProps) =
             </p>
         </div>
 
-        <button></button>
+        <button 
+            className="w-full bg-black p-3 uppercase text-white font-bold disabled:opacity-10"
+            disabled={ order.length === 0 }
+            onClick={ () => placeOrder() }
+        >
+            Guardar Orden
+        </button>
 
     </>
   )

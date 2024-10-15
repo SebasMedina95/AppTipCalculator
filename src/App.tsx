@@ -10,11 +10,13 @@ function App() {
   const { 
     order, 
     subTotal,
+    tip,
     totalTip,
     totalOrder,
     setTip,
     addItem, 
-    removeItem, 
+    removeItem,
+    placeOrder
   } = useOrder();
 
   return (
@@ -53,6 +55,7 @@ function App() {
 
             <TipPercentsForm 
               setTip={setTip}
+              tip={tip}
             />
 
             <OrderTotals 
@@ -60,6 +63,7 @@ function App() {
               subTotal={subTotal}
               totalTip={totalTip}
               totalOrder={totalOrder}
+              placeOrder={placeOrder}
             />
 
         </div>

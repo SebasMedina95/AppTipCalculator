@@ -75,8 +75,12 @@ export default function useOrder() {
         const valTip: number = Number(subTotal * tip);
         setTotalTip(valTip);
         setTotalOrder(subTotal + valTip);
-        console.log("Acá estoy");
 
+    }
+
+    const placeOrder = () => {
+        setOrder([])
+        setTip(0)
     }
 
     // Recalcular subtotal cada vez que cambie la orden
@@ -99,6 +103,7 @@ export default function useOrder() {
         removeItem,
         subtotalAmount,
         calculatedTip,
+        placeOrder
     }
 
 }
